@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.sistemas.model;
 
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author juan
+ * @author admin
  */
 @Entity
 @Table(name = "tipo_disco")
@@ -34,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "TipoDisco.findAll", query = "SELECT t FROM TipoDisco t"),
     @NamedQuery(name = "TipoDisco.findByIdtipoDisco", query = "SELECT t FROM TipoDisco t WHERE t.idtipoDisco = :idtipoDisco"),
+    @NamedQuery(name = "TipoDisco.findByMarcaDisco", query = "SELECT t FROM TipoDisco t WHERE t.marcaDisco = :marcaDisco"),
     @NamedQuery(name = "TipoDisco.findByTipoDisco", query = "SELECT t FROM TipoDisco t WHERE t.tipoDisco = :tipoDisco"),
     @NamedQuery(name = "TipoDisco.findByVelocidadLectura", query = "SELECT t FROM TipoDisco t WHERE t.velocidadLectura = :velocidadLectura")})
 public class TipoDisco implements Serializable {
@@ -44,6 +44,11 @@ public class TipoDisco implements Serializable {
     @Basic(optional = false)
     @Column(name = "idtipo_disco")
     private Integer idtipoDisco;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "marca_disco")
+    private String marcaDisco;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -63,8 +68,9 @@ public class TipoDisco implements Serializable {
         this.idtipoDisco = idtipoDisco;
     }
 
-    public TipoDisco(Integer idtipoDisco, String tipoDisco, int velocidadLectura) {
+    public TipoDisco(Integer idtipoDisco, String marcaDisco, String tipoDisco, int velocidadLectura) {
         this.idtipoDisco = idtipoDisco;
+        this.marcaDisco = marcaDisco;
         this.tipoDisco = tipoDisco;
         this.velocidadLectura = velocidadLectura;
     }
@@ -75,6 +81,14 @@ public class TipoDisco implements Serializable {
 
     public void setIdtipoDisco(Integer idtipoDisco) {
         this.idtipoDisco = idtipoDisco;
+    }
+
+    public String getMarcaDisco() {
+        return marcaDisco;
+    }
+
+    public void setMarcaDisco(String marcaDisco) {
+        this.marcaDisco = marcaDisco;
     }
 
     public String getTipoDisco() {

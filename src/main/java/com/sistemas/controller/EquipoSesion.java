@@ -55,6 +55,7 @@ public class EquipoSesion implements Serializable {
     private List<TipoDisco> tipoDiscos; 
     
     private Equipo eq = new Equipo () ;
+    private Equipo eqreg = new Equipo() ;
     private Equipo eqtemporal = new Equipo () ;
     
     
@@ -72,15 +73,15 @@ public class EquipoSesion implements Serializable {
     public void registrarEquipo(){
         try {
             
-            eq.setTipoProcesadorIdtipoprocesador(tipoProcesador);
-            eq.setTipoRamIdtipoRam(tipoRam);
-            eq.setTipoDiscoIdtipoDisco(tipoDisco);
-            equipoFacadeLocal.create(eq); 
+            eqreg.setTipoProcesadorIdtipoprocesador(tipoProcesador);
+            eqreg.setTipoRamIdtipoRam(tipoRam);
+            eqreg.setTipoDiscoIdtipoDisco(tipoDisco);
+            equipoFacadeLocal.create(eqreg); 
             
             tipoProcesador = new TipoProcesador() ;
             tipoRam = new TipoRam () ;
             tipoDisco = new TipoDisco () ;
-            eq = new Equipo() ;
+            eqreg = new Equipo() ;
             equipos=equipoFacadeLocal.findAll(); 
         } catch (Exception e) {
         }
@@ -132,13 +133,7 @@ public class EquipoSesion implements Serializable {
         this.equipos = equipos;
     }
 
-    public Equipo getEq() {
-        return eq;
-    }
-
-    public void setEq(Equipo eq) {
-        this.eq = eq;
-    }
+ 
 
     public Equipo getEqtemporal() {
         return eqtemporal;
@@ -202,6 +197,22 @@ public class EquipoSesion implements Serializable {
 
     public void setTipoDiscos(List<TipoDisco> tipoDiscos) {
         this.tipoDiscos = tipoDiscos;
+    }
+
+    public Equipo getEq() {
+        return eq;
+    }
+
+    public void setEq(Equipo eq) {
+        this.eq = eq;
+    }
+
+    public Equipo getEqreg() {
+        return eqreg;
+    }
+
+    public void setEqreg(Equipo eqreg) {
+        this.eqreg = eqreg;
     }
     
 }

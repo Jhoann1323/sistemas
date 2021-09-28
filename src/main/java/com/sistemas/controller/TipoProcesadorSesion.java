@@ -48,7 +48,7 @@ public class TipoProcesadorSesion implements Serializable{
             //Renderizado de la tabla //
             tipoProcesadores=tipoProcesadorFacadeLocal.findAll(); 
             //limpieza de objeto //
-            pro = new TipoProcesador() ;
+        //    pro = new TipoProcesador() ;//
         } catch (Exception e) {
         }
     }
@@ -62,7 +62,7 @@ public class TipoProcesadorSesion implements Serializable{
            try {
                tipoProcesadorFacadeLocal.edit(protemporal);
                tipoProcesadores=tipoProcesadorFacadeLocal.findAll(); 
-               protemporal = new TipoProcesador () ; 
+           //    protemporal = new TipoProcesador () ; //
            } catch (Exception e) {
            }
        }

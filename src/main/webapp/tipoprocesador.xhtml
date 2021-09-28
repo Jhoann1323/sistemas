@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/Passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"     
+      xmlns:f="http://xmlns.jcp.org/jsf/core"">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+          <div class="card container mt-3 mb-3" style="max-width: 100rem;" id="carta">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold text-white lang" key="l">Lista de bodegas:</h5>
+                                        <br/>
+                                        <p:growl id="growl" life="3000"/>
+                                        <h:form id="frmPrincipal">
+
+                                            <p:dataTable id="tabla" emptyMessage="Ninguna equipo registrado" value="#{tipoProcesadorSesion.tipoProcesadores}" 
+                                                         var="pro" paginator="true"  rows="10" rowSelectMode="add" paginatorPosition="bottom"
+                                                         >
+
+                                                <p:column headerText="ID procesador:" filterBy="#{pro.idtipoprocesador}" filterMatchMode="contains" >
+                                                    <h:outputText value="#{pro.idtipoprocesador}"  /> 
+                                                </p:column>
+
+                                                <p:column headerText="Nombre Procesador" >
+                                                    <h:outputText value="#{pro.nombreProcesador}"  /> 
+                                                </p:column>
+
+                                                <p:column headerText="Nucleos " >
+                                                    <h:outputText value="#{pro.cantidadNucleos}"  /> 
+                                                </p:column>
+                                                <p:column headerText="Hilos" >
+                                                    <h:outputText value="#{pro.cantidadHilos}"  /> 
+                                                </p:column>
+                                                <p:column headerText="Frecuencia" >
+                                                    <h:outputText value="#{pro.frecuenciaProcesador}"  /> 
+                                                </p:column>
+
+                                                <p:column headerText=" " exportable="false" >
+
+                                                    <h:commandButton class="btn btn-warning rounded-pill"
+                                                                     html5:data-toggle = "modal"
+                                                                     html5:data-target = "#Editar" 
+                                                                     action="#{tipoProcesadorSesion.guardarTemporal(pro)}" 
+                                                                     value="Editar" >
+                                                        <f:ajax render=":formEditar"> </f:ajax>
+                                                    </h:commandButton>
+                                                </p:column>
+
+
+
+
+                                                <p:column headerText=" " exportable="false" >
+
+                                                    <h:commandLink class="btn btn-danger rounded-pill" action="#{tipoProcesadorSesion.eliminarTipoProcesador(pro)}" value="Eliminar"/>
+                                                </p:column>  
+
+
+
+                                            </p:dataTable>
+                                        </h:form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    </h:body>
+</html>
+

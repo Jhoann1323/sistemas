@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.sistemas.model;
 
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author juan
+ * @author admin
  */
 @Entity
 @Table(name = "tipo_ram")
@@ -34,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "TipoRam.findAll", query = "SELECT t FROM TipoRam t"),
     @NamedQuery(name = "TipoRam.findByIdtipoRam", query = "SELECT t FROM TipoRam t WHERE t.idtipoRam = :idtipoRam"),
+    @NamedQuery(name = "TipoRam.findByMarcaRam", query = "SELECT t FROM TipoRam t WHERE t.marcaRam = :marcaRam"),
     @NamedQuery(name = "TipoRam.findByCapacidad", query = "SELECT t FROM TipoRam t WHERE t.capacidad = :capacidad"),
     @NamedQuery(name = "TipoRam.findByFrecuenciaRam", query = "SELECT t FROM TipoRam t WHERE t.frecuenciaRam = :frecuenciaRam"),
     @NamedQuery(name = "TipoRam.findByTipoDDR", query = "SELECT t FROM TipoRam t WHERE t.tipoDDR = :tipoDDR")})
@@ -45,6 +45,11 @@ public class TipoRam implements Serializable {
     @Basic(optional = false)
     @Column(name = "idtipo_ram")
     private Integer idtipoRam;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "marca_ram")
+    private String marcaRam;
     @Basic(optional = false)
     @NotNull
     @Column(name = "capacidad")
@@ -68,8 +73,9 @@ public class TipoRam implements Serializable {
         this.idtipoRam = idtipoRam;
     }
 
-    public TipoRam(Integer idtipoRam, int capacidad, int frecuenciaRam, String tipoDDR) {
+    public TipoRam(Integer idtipoRam, String marcaRam, int capacidad, int frecuenciaRam, String tipoDDR) {
         this.idtipoRam = idtipoRam;
+        this.marcaRam = marcaRam;
         this.capacidad = capacidad;
         this.frecuenciaRam = frecuenciaRam;
         this.tipoDDR = tipoDDR;
@@ -81,6 +87,14 @@ public class TipoRam implements Serializable {
 
     public void setIdtipoRam(Integer idtipoRam) {
         this.idtipoRam = idtipoRam;
+    }
+
+    public String getMarcaRam() {
+        return marcaRam;
+    }
+
+    public void setMarcaRam(String marcaRam) {
+        this.marcaRam = marcaRam;
     }
 
     public int getCapacidad() {

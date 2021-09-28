@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.sistemas.model;
 
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author juan
+ * @author admin
  */
 @Entity
 @Table(name = "equipo")
@@ -32,9 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Equipo.findAll", query = "SELECT e FROM Equipo e"),
     @NamedQuery(name = "Equipo.findByIdequipo", query = "SELECT e FROM Equipo e WHERE e.idequipo = :idequipo"),
-    @NamedQuery(name = "Equipo.findByNombreProcesador", query = "SELECT e FROM Equipo e WHERE e.nombreProcesador = :nombreProcesador"),
-    @NamedQuery(name = "Equipo.findByNombreRam", query = "SELECT e FROM Equipo e WHERE e.nombreRam = :nombreRam"),
-    @NamedQuery(name = "Equipo.findByNombreDisco", query = "SELECT e FROM Equipo e WHERE e.nombreDisco = :nombreDisco")})
+    @NamedQuery(name = "Equipo.findByNombreEquipo", query = "SELECT e FROM Equipo e WHERE e.nombreEquipo = :nombreEquipo")})
 public class Equipo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,18 +43,8 @@ public class Equipo implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "nombre_procesador")
-    private String nombreProcesador;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "nombre_ram")
-    private String nombreRam;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "nombre_disco")
-    private String nombreDisco;
+    @Column(name = "nombre_equipo")
+    private String nombreEquipo;
     @JoinColumn(name = "tipo_disco_idtipo_disco", referencedColumnName = "idtipo_disco")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TipoDisco tipoDiscoIdtipoDisco;
@@ -75,11 +62,9 @@ public class Equipo implements Serializable {
         this.idequipo = idequipo;
     }
 
-    public Equipo(Integer idequipo, String nombreProcesador, String nombreRam, String nombreDisco) {
+    public Equipo(Integer idequipo, String nombreEquipo) {
         this.idequipo = idequipo;
-        this.nombreProcesador = nombreProcesador;
-        this.nombreRam = nombreRam;
-        this.nombreDisco = nombreDisco;
+        this.nombreEquipo = nombreEquipo;
     }
 
     public Integer getIdequipo() {
@@ -90,28 +75,12 @@ public class Equipo implements Serializable {
         this.idequipo = idequipo;
     }
 
-    public String getNombreProcesador() {
-        return nombreProcesador;
+    public String getNombreEquipo() {
+        return nombreEquipo;
     }
 
-    public void setNombreProcesador(String nombreProcesador) {
-        this.nombreProcesador = nombreProcesador;
-    }
-
-    public String getNombreRam() {
-        return nombreRam;
-    }
-
-    public void setNombreRam(String nombreRam) {
-        this.nombreRam = nombreRam;
-    }
-
-    public String getNombreDisco() {
-        return nombreDisco;
-    }
-
-    public void setNombreDisco(String nombreDisco) {
-        this.nombreDisco = nombreDisco;
+    public void setNombreEquipo(String nombreEquipo) {
+        this.nombreEquipo = nombreEquipo;
     }
 
     public TipoDisco getTipoDiscoIdtipoDisco() {

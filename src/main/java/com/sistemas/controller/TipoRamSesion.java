@@ -45,7 +45,7 @@ public class TipoRamSesion implements Serializable {
 
             tipoRams = tipoRamFacadeLocal.findAll();
 
-            ram = new TipoRam();
+        
         } catch (Exception e) {
         }
     }
@@ -58,7 +58,7 @@ public class TipoRamSesion implements Serializable {
         try {
             tipoRamFacadeLocal.edit(ramtemporal);
             tipoRams = tipoRamFacadeLocal.findAll();
-            ramtemporal = new TipoRam();
+           
 
         } catch (Exception e) {
         }
